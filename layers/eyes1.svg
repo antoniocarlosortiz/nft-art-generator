@@ -1,7 +1,6 @@
 <svg width="350" height="339" viewBox="0 0 350 339" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Frame 5">
-<rect width="350" height="339" fill="white"/>
-<rect width="350" height="339" stroke="white"/>
+<rect width="350" height="339"/>
 <path d="M111.563 133.642C116.909 129.592 120.308 125.511 127.245 125.511C131.082 125.511 135.29 124.349 139.441 124.349C146.707 124.349 151.921 127.104 158.026 130.157" stroke="black" stroke-width="3" stroke-linecap="round"/>
 <path d="M125.502 173.135C134.028 173.135 141.338 175.459 149.895 175.459" stroke="black" stroke-width="3" stroke-linecap="round"/>
 <path d="M205.651 127.834C216.035 121.756 232.719 115.76 239.336 128.996" stroke="black" stroke-width="3" stroke-linecap="round"/>
