@@ -14,7 +14,7 @@ const template = `
 
 const takenNames = {};
 const takenFaces = {};
-let idx = 999;
+let idx = 100;
 
 function randInt(max) {
     return Math.floor(Math.random() * (max + 1));
@@ -26,9 +26,9 @@ function randElement(arr) {
 
 
 function getRandomName() {
-    const adjectives = 'astute clear-sighted creative decisive discerning inquisitive intuitive observant quick-witted sincere athletic diligent persistent steadfast benevolent generous kindhearted'
+    const adjectives = 'astute clear-sighted creative decisive discerning inquisitive intuitive observant quick-witted sincere athletic diligent persistent steadfast benevolent generous kindhearted'.split(' ')
     const names = 'olivia emma amelia ava sophia charlotte isabella mia luna harper gianna evelyn aria ella ellie mila layla avery camila lily scarlett sofia nova aurora chloe riley nora hazel abigail rylee penelope elena zoey isla eleanor elizabeth madison willow emilia violet'.split(' ');
-    const lastNames = 'smith johnson williams brown jones garcia miller davis wilson harris clark walker young valentine king campbell carter roberts phillips evans turner parker edwards collins stewart morris murphy cook'.split('')
+    const lastNames = 'smith johnson williams brown jones garcia miller davis wilson harris clark walker young valentine king campbell carter roberts phillips evans turner parker edwards collins stewart morris murphy cook'.split(' ')
 
     const randAdj = randElement(adjectives);
     const randLastName = randElement(lastNames);
@@ -50,6 +50,8 @@ function getLayer(name, skip=0.0) {
     return Math.random() > skip ? layer : '';
 }
 
+
+
 async function svgToPng(name) {
     const src = `./out/${name}.svg`;
     const dest = `./out/${name}.png`;
@@ -62,13 +64,11 @@ async function svgToPng(name) {
 
 function createImage(idx) {
 
-    const bg = randInt(5);
-    const hair = randInt(7);
-    const eyes = randInt(9);
-    const nose = randInt(4); 
-    const mouth = randInt(5);
-    const beard = randInt(3);
-    // 18,900 combinations
+    const bg = randInt(2);
+    const hair = randInt(2);
+    const eyes = randInt(2);
+    const nose = randInt(2); 
+    const mouth = randInt(2);
 
     const face = [hair, eyes, mouth, nose].join('');
 
@@ -95,7 +95,13 @@ function createImage(idx) {
             image: `${idx}.png`,
             attributes: [
                 { 
-                    rarity: 0.5
+                    background: `bg${bg}`,
+                    head: 'head0',
+                    hair: `hair${hair}`,
+                    eyes: `eyes${eyes}`,
+                    nose: `nose${nose}`,
+                    mouth: `mouth${mouth}`,
+                    rarity: 0.5 // rariry currently static but will be updated next time.
                 }
             ]
         }
@@ -103,8 +109,6 @@ function createImage(idx) {
         writeFileSync(`./out/${idx}.svg`, final)
         svgToPng(idx)
     }
-
-
 }
 
 
@@ -114,7 +118,9 @@ if (!existsSync('./out')){
 }
 
 // Cleanup dir before each run
-readdirSync('./out').forEach(f => rmSync(`./out/${f}`));
+readdirSync('./out').forEach(f => {
+    return rmSync(`./out/${f}`);
+});
 
 
 do {
